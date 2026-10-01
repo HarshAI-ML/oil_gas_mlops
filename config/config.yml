@@ -1,0 +1,60 @@
+catalog: oil_gas_mlops
+
+bronze:
+  source_path: /Volumes/oil_gas_mlops/raw/raw_oil_gas_mlops/supply_chain_dataset.xlsx
+  sheet_name: in
+  target_catalog: oil_gas_mlops
+  target_schema: bronze
+  target_table: bronze_supply_chain
+  write_mode: overwrite
+
+silver:
+  input_table: oil_gas_mlops.bronze.bronze_supply_chain
+  output_table: oil_gas_mlops.silver.silver_supply_chain
+  config_transformation_table: oil_gas_mlops.config.config_transformation
+  config_dq_table: oil_gas_mlops.config.config_dq
+  source_table_name: bronze_supply_chain
+  columns_to_drop: [ingestion_ts, source_system, operation_type]
+
+gold:
+  silver_table: oil_gas_mlops.silver.silver_supply_chain
+  gold_table: oil_gas_mlops.gold.gold_supply_chain
+  feature_table: oil_gas_mlops.gold.feature_table
+
+feature_store:
+  key_columns: [transaction_date, product_name, destination_city]
+  label_column: total_demand_quantity
+  gold_feature_table: oil_gas_mlops.gold.feature_table
+  v1_feature_table: oil_gas_mlops.gold.v1_feature_table
+  features_table: oil_gas_mlops.gold.features_supply_chain
+  labels_table: oil_gas_mlops.gold.labels_supply_chain
+  feature_store_table: oil_gas_mlops.gold.feature_store_supply_chain
+  description: "Feature table (X only) keyed by date, product and city"
+
+split:
+  train_ratio: 0.8
+  validation_ratio: 0.8
+
+preprocessing:
+  categorical_columns: [product_name, destination_city]
+  ml_schema: oil_gas_mlops.ml_data
+  train_table: oil_gas_mlops.ml_data.train_data
+  validation_table: oil_gas_mlops.ml_data.validation_data
+  test_table: oil_gas_mlops.ml_data.test_data
+
+training:
+  model_name: oil_gas_mlops.ml_models.supply_chain_demand_model_sklearn
+  num_trees: 100
+  max_depth: 8
+  max_rmse: 1000
+  min_r2: 0.85
+  experiment_path: /Users/hsshinnde0702@gmail.com/rf_supply_chain
+  exclude_columns: [transaction_date, product_name, destination_city, product_name_index, destination_city_index]
+
+inference:
+  model_name: oil_gas_mlops.ml_models.supply_chain_demand_model_sklearn
+  test_table: oil_gas_mlops.ml_data.test_data
+  output_table: oil_gas_mlops.ml_data.test_predictions
+  label_column: total_demand_quantity
+  exclude_columns: [transaction_date, product_name, destination_city, product_name_index, destination_city_index]
+  id_columns: [transaction_date, product_name, destination_city]
