@@ -154,7 +154,8 @@ def main(config_path):
             model,
             artifact_path="model",
             signature=signature,
-            input_example=signature_input
+            input_example=signature_input,
+            skops_trusted_types=["sklearn.tree._tree.Tree"]
         )
 
         registrar = ModelRegistrar(

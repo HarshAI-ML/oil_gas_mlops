@@ -1,0 +1,12 @@
+bundle:
+  name: oil_gas_mlops
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    default: true
+    workspace:
+      host: https://dbc-0284b47a-4f81.cloud.databricks.com/
+      
