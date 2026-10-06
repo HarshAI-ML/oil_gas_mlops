@@ -1,7 +1,7 @@
 resources:
   jobs:
     Oil_gas_mlops_py_version:
-      name: Oil_gas_mlops_py_version
+      name: Oil_gas_mlops_py_version_harsh
 
       tasks:
         - task_key: Data_Engineering
