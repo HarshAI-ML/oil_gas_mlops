@@ -1,7 +1,7 @@
 resources:
   jobs:
     demand_forecasting_v2:
-      name: oil_and_gas_pipeline
+      name: oil_and_gas_pipeline_v2
 #check
       tasks:
         - task_key: Data_Engineering
