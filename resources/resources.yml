@@ -1,6 +1,6 @@
 resources:
   jobs:
-    demand_forecasting:
+    demand_forecasting_v2:
       name: oil_and_gas_pipeline
 #check
       tasks:
