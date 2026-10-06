@@ -23,7 +23,7 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
       - name: Run the job after deploy (optional)
-        run: databricks bundle run Oil_gas_mlops_py_version_harsh --target dev
+        run: databricks bundle run demand_forecasting --target dev
         working-directory: .
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
