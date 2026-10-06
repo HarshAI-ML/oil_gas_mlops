@@ -1,7 +1,7 @@
 resources:
   jobs:
-    Oil_gas_mlops_py_version:
-      name: Oil_gas_mlops_py_version_harsh
+    Oil_gas_mlops_py_version_harsh:
+      name: demand_forecasting
 
       tasks:
         - task_key: Data_Engineering
