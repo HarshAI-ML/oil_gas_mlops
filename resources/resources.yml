@@ -2,6 +2,17 @@ resources:
   jobs:
     demand_forecasting_v2:
       name: oil_and_gas_pipeline_v2
+
+      email_notifications:
+        on_start:
+          - hsshinnde0702@gmail.com
+        on_success:
+          - hsshinnde0702@gmail.com
+        on_failure:
+          - hsshinnde0702@gmail.com
+          
+        on_duration_warning_threshold_exceeded:
+          - hsshinnde0702@gmail.com
 #check
       tasks:
         - task_key: Data_Engineering
