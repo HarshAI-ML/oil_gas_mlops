@@ -1,5 +1,6 @@
 from pyspark.sql import Window
-from pyspark.sql.functions import col, lag, avg, dayofweek, month, sum as spark_sum, count
+from pyspark.sql.functions import avg, col, count, dayofweek, lag, month
+from pyspark.sql.functions import sum as spark_sum
 
 
 class GoldAggregation:

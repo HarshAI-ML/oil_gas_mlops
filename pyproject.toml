@@ -1,0 +1,18 @@
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]  # pyflakes, pycodestyle, isort, warnings
+ignore = ["E501"]              # line length handled by formatter, not a hard fail
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true   # pyspark/mlflow stubs are incomplete — don't fail on that
+disallow_untyped_defs = false   # start lenient; tighten once the codebase has type hints
+warn_unused_ignores = true
+exclude = ["tests/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,19 +1,20 @@
-from pyspark.sql import SparkSession
+import os
+import sys
 
 import mlflow
-import sys, os
+from pyspark.sql import SparkSession
 
 try:
     current_dir = os.path.dirname(__file__)
 except NameError:
     current_dir = os.getcwd()
 
-    
+
 sys.path.append(os.path.join(current_dir, ".."))
-from utils.config_loader import ConfigLoader
 from inference.champion_loader import ChampionLoader
-from inference.predictor import Predictor
 from inference.prediction_writer import PredictionWriter
+from inference.predictor import Predictor
+from utils.config_loader import ConfigLoader
 
 
 def main(config_path):

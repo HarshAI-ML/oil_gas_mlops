@@ -55,7 +55,6 @@
 
 #         return transformed_df
 
-import pandas as pd
 
 
 class CategoricalEncoder:
