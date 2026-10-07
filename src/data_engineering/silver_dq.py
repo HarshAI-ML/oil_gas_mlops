@@ -14,7 +14,7 @@ class DataQualityChecker:
         rules_df = (
             self.spark.table(self.config_table)
             .filter(col("table_name") == self.source_table_name)
-            .filter(col("is_active") == True)
+            .filter(col("is_active"))
         )
         self.rules = rules_df.collect()
 

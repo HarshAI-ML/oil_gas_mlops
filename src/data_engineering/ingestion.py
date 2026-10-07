@@ -1,4 +1,5 @@
-from pyspark.sql.functions import current_timestamp, lit
+from pyspark.sql.functions import current_timestamp
+
 
 # test
 class ExcelToBronzeIngestion:
@@ -18,7 +19,7 @@ class ExcelToBronzeIngestion:
         self.df = None
 
     def read_source(self):
-        
+
         self.df = (
             self.spark.read.format("excel")
             .option("header", self.header)
@@ -27,7 +28,7 @@ class ExcelToBronzeIngestion:
             .option("dataAddress", self.sheet_name)
             .load(self.source_path)
         )
-        
+
 
     def add_metadata_columns(self):
         if self.df is None:
@@ -36,9 +37,9 @@ class ExcelToBronzeIngestion:
         self.df = (
             self.df
             .withColumn("ingestion_ts", current_timestamp())
-            
+
         )
-        
+
 
     def write_to_bronze(self):
         if self.df is None:

@@ -1,7 +1,7 @@
 from pyspark.sql.functions import current_timestamp
 
-from data_engineering.silver_transform import SilverTransformation
 from data_engineering.silver_dq import DataQualityChecker
+from data_engineering.silver_transform import SilverTransformation
 
 
 def run_silver(spark, silver_config):

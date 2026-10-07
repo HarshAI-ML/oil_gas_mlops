@@ -1,5 +1,6 @@
 from mlflow.tracking import MlflowClient
 
+
 class ChampionChallengerManager:
 
     def __init__(self, model_name, champion_alias="champion", challenger_alias="challenger"):
