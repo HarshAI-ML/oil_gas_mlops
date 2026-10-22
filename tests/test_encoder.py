@@ -64,7 +64,7 @@ def test_transform_on_unseen_category_raises_keyerror(spark):
     # or produce all-zero columns instead.
     train = spark.createDataFrame([("Tesla",)], ["vehicle_brand"])
     unseen = spark.createDataFrame([("Rivian",)], ["vehicle_brand"])
-    
+
     encoder = CategoricalEncoder(categorical_columns=["vehicle_brand"])
     encoder.fit(train)
 
