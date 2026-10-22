@@ -8,7 +8,7 @@ class ChampionChallengerManager:
         self.champion_alias = champion_alias
         self.challenger_alias = challenger_alias
         self.client = MlflowClient()
-
+    
     def _get_rmse_by_alias(self, alias):
         # Returns (version, validation_rmse) for whichever version holds this alias
         # Returns (None, None) if the alias does not exist yet

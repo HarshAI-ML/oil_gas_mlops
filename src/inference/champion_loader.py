@@ -8,7 +8,7 @@ class ChampionLoader:
         self.model_name = model_name
         self.alias = alias
         self.client = MlflowClient()
-
+    
     def get_version(self):
         champion = self.client.get_model_version_by_alias(self.model_name, self.alias)
         return champion.version
