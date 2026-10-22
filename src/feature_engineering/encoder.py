@@ -5,6 +5,7 @@
 
 
 # class CategoricalEncoder:
+#test
 
 #     def __init__(self, categorical_columns):
 #         self.categorical_columns = categorical_columns
